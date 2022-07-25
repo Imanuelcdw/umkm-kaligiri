@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI</title>
+    <%- include('../partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('../dashboard/partials/header.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <div class="card w-50 shadow">
+        <div class="card-body">
+          <h3>Tambah Produk</h3>
+          <form action="/product" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama Produk</label>
+              <input type="text" class="form-control" id="name" placeholder="Nama Produk" name="name" />
+            </div>
+
+            <div class="mb-3">
+              <label for="desc" class="form-label">Deskripsi</label>
+              <textarea name="description" id="desc" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Gambar</label>
+              <input class="form-control" type="file" id="image" name="image" />
+            </div>
+
+            <div class="mb-3">
+              <label for="size" class="form-label">Ukuran</label>
+              <input type="text" class="form-control" id="size" placeholder="Ukuran" name="size" />
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Harga</label>
+              <input type="numebr" class="form-control" id="price" placeholder="Harga" name="price" />
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+  </body>
+</html>
+<%- include('../partials/js.ejs') %>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI</title>
+    <%- include('../partials/css.ejs') %>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+  </head>
+  <body>
+    <%- include('../dashboard/partials/header.ejs') %>
+    <!--  -->
+    <section>
+      <div class="container mt-3">
+        <h3>Produk</h3>
+        <a href="product/add" class="btn btn-sm btn-primary">Tambah Produk</a>
+        <table id="table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Gambar</th>
+              <th>Nama</th>
+              <th>Deskripsi</th>
+              <th>Ukuran</th>
+              <th>Harga</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((e, i) => { %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= e.image %></td>
+              <td><%= e.name %></td>
+              <td><%= e.description %></td>
+              <td><%= e.size %></td>
+              <td><%= e.price %></td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <a href="product/view/<%= e._id %>" class="btn btn-sm btn-primary">View</a>
+                  </div>
+                  <div class="col">
+                    <a href="" class="btn btn-sm btn-primary">Edit</a>
+                  </div>
+                  <div class="col">
+                    <form action="product/delete/<%= e._id %>?_method=delete" method="POST">
+                      <button type="submit" class="btn btn-sm btn-primary">Hapus</button>
+                    </form>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!--  -->
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<%- include('../partials/js.ejs') %>
+<script>
+  $(document).ready(function () {
+    $('#table').DataTable()
+  })
+</script>

@@ -21,6 +21,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'Masukan Harga'],
     },
+    type: {
+      type: String,
+      required: [true, 'Masukan jenis umkm'],
+    },
   },
   { timestamps: true }
 )

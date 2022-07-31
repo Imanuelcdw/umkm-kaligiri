@@ -14,6 +14,37 @@
       <div class="card">
         <div class="card-body">
           <h3>Edit Produk</h3>
+
+          <form action="/product/edit/<%= data._id %>?_method=patch" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama Produk</label>
+              <input type="text" class="form-control" id="name" placeholder="Nama Produk" name="name" value="<%= data.name %>" />
+            </div>
+
+            <div class="mb-3">
+              <label for="desc" class="form-label">Deskripsi</label>
+              <textarea name="description" id="desc" class="form-control"><%= data.description %></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Gambar</label>
+              <input class="form-control" type="file" id="image" name="image" />
+            </div>
+
+            <div class="mb-3">
+              <label for="size" class="form-label">Ukuran</label>
+              <input type="text" class="form-control" id="size" placeholder="Ukuran" name="size" value="<%= data.size %>" />
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Harga</label>
+              <input type="numebr" class="form-control" id="price" placeholder="Harga" name="price" value="<%= data.price %>" />
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Ubah</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

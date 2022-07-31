@@ -43,29 +43,14 @@
           </div>
           <div class="col-md-9">
             <div class="my-slider">
-              <div class="item">
-                <a href="/product/">
-                  <img class="shadow rounded-1" style="width: 400px; height: 400px" src="4.jpg" alt="" />
-                </a>
-              </div>
-              <div class="item">
-                <a href="/product/">
-                  <img class="shadow rounded-1" style="width: 400px; height: 400px" src="5.jpg" alt="" />
-                </a>
-              </div>
-              <div class="item">
-                <a href="/product/">
-                  <img class="shadow rounded-1" style="width: 400px; height: 400px" src="6.jpg" alt="" />
-                </a>
-              </div>
-              <!-- <% product.forEach((e) => { %>
+              <% data.forEach((e) => { %>
 
               <div class="item">
                 <a href="/product/<%= e._id %>">
-                  <img class="shadow rounded-1" src="<%= e.image %>" alt="" />
+                  <img class="shadow rounded-1" src="<%= e.image %>" alt="" width="400" height="400" />
                 </a>
               </div>
-              <% }) %> -->
+              <% }) %>
             </div>
           </div>
         </div>

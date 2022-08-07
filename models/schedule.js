@@ -6,12 +6,20 @@ const scheduleSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Masukan nama acara'],
     },
+    venue: {
+      type: String,
+      required: [true, 'Masukan tempat acara'],
+    },
     description: {
       type: String,
     },
-    time_length: {
+    start: {
       type: String,
-      required: [true, 'Masukan lama waktu acara'],
+      required: [true, 'Masukan waktu mulai acara'],
+    },
+    end: {
+      type: String,
+      required: [true, 'Masukan waktu selesai acara'],
     },
   },
   { timestamps: true }

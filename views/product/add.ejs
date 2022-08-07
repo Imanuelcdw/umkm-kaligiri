@@ -4,50 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UMKM KALIGIRI</title>
+    <title>UMKM KALIGIRI - <%= active %></title>
     <%- include('../partials/css.ejs') %>
   </head>
   <body>
-    <%- include('../dashboard/partials/header.ejs') %>
+    <%- include('../partials/header-dashboard.ejs') %>
     <!--  -->
     <div class="container mt-3">
-      <div class="card w-50 shadow">
-        <div class="card-body">
-          <h3>Tambah Produk</h3>
-          <form action="/product" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nama Produk</label>
-              <input type="text" class="form-control" id="name" placeholder="Nama Produk" name="name" />
-            </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3>Tambah Produk</h3>
+              <form action="/product" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nama Produk</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nama Produk" name="name" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="desc" class="form-label">Deskripsi</label>
-              <textarea name="description" id="desc" class="form-control"></textarea>
-            </div>
+                <div class="mb-3">
+                  <label for="type" class="form-label">Jenis UMKM</label>
+                  <input type="text" class="form-control" id="type" placeholder="Jenis UMKM" name="type" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="image" class="form-label">Gambar</label>
-              <input class="form-control" type="file" id="image" name="image" />
-            </div>
+                <div class="mb-3">
+                  <label for="desc" class="form-label">Deskripsi</label>
+                  <textarea name="description" id="desc" class="form-control" required></textarea>
+                </div>
 
-            <div class="mb-3">
-              <label for="size" class="form-label">Ukuran</label>
-              <input type="text" class="form-control" id="size" placeholder="Ukuran" name="size" />
-            </div>
+                <div class="mb-3">
+                  <label for="image" class="form-label">Gambar</label>
+                  <input class="form-control" type="file" id="image" name="image" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="price" class="form-label">Harga</label>
-              <input type="numebr" class="form-control" id="price" placeholder="Harga" name="price" />
-            </div>
+                <div class="mb-3">
+                  <label for="size" class="form-label">Ukuran</label>
+                  <input type="text" class="form-control" id="size" placeholder="Ukuran" name="size" required />
+                </div>
 
-            <div class="mb-3">
-              <button type="submit" class="btn btn-primary">Simpan</button>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Harga</label>
+                  <input type="number" class="form-control" id="price" placeholder="Harga" name="price" required />
+                </div>
+
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              Preview gambar
+              <img src="" id="preview" class="img-fluid" alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!--  -->
+
+    <div class="my-5"></div>
   </body>
 </html>
 <%- include('../partials/js.ejs') %>
+<script>
+  image.onchange = (e) => {
+    const [file] = image.files
+    if (file) {
+      preview.src = URL.createObjectURL(file)
+    }
+  }
+</script>

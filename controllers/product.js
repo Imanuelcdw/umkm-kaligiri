@@ -6,15 +6,13 @@ const fs = require('fs')
 class ProductController {
   static getAll = asyncHandler(async (req, res) => {
     const data = await Product.find()
-    res.render('product/index', { data })
-    // res.json(data)
+    res.render('./product/index', { data, active: 'product' })
   })
 
   static get = asyncHandler(async (req, res) => {
     const { id } = req.params
-    const data = await Product.find({ _id: id })
-    res.render('product/view', { data })
-    // res.json(data)
+    const data = await Product.findOne({ _id: id })
+    res.render('./product/view', { data, active: 'product' })
   })
 
   static create = asyncHandler(async (req, res) => {
@@ -26,8 +24,20 @@ class ProductController {
     res.redirect('/product')
   })
 
-  static edit = asyncHandler(async (req, res) => {
+  static update = asyncHandler(async (req, res) => {
+    const file = req.files
     const { id } = req.params
+    if (!file) {
+      delete req.body.image
+    } else {
+      const data = await Product.findOne({ _id: id })
+      fs.unlinkSync(`./public/${data.image}`)
+
+      const image = file.image
+      const uploadPath = './public/' + image.name
+      await image.mv(uploadPath)
+      req.body.image = image.name
+    }
     const data = await Product.findOneAndUpdate({ _id: id }, req.body, { new: true })
     res.redirect('/product')
   })
@@ -40,18 +50,14 @@ class ProductController {
     res.redirect('/product')
   })
 
-  static vadd = asyncHandler(async (req, res) => {
-    res.render('product/add')
+  static add = asyncHandler(async (req, res) => {
+    res.render('./product/add', { active: 'product' })
   })
 
-  static vedit = asyncHandler(async (req, res) => {
+  static edit = asyncHandler(async (req, res) => {
     const { id } = req.params
     const data = await Product.findOne({ _id: id })
-    res.render('product/edit', { data })
-  })
-
-  static vview = asyncHandler(async (req, res) => {
-    res.render('product/view')
+    res.render('./product/edit', { data, active: 'product' })
   })
 }
 

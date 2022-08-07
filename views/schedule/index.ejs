@@ -15,16 +15,17 @@
       <div class="container mt-3">
         <div class="card shadow">
           <div class="card-body">
-            <h3>Produk</h3>
-            <a href="product/add" class="btn btn-sm btn-primary mb-3">Tambah Produk</a>
+            <h3>Jadwal Acara</h3>
+            <a href="schedule/add" class="btn btn-sm btn-primary mb-3">Tambah Acara</a>
             <table id="table" class="table table-striped">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Produk</th>
-                  <th>Jenis UMKM</th>
-                  <th>Ukuran</th>
-                  <th>Harga</th>
+                  <th>Nama Acara</th>
+                  <th>Tempat Acara</th>
+                  <th>Tanggal Mulai</th>
+                  <th>Tanggal Selesai</th>
+                  <th>Lama Acara</th>
                   <th>#</th>
                 </tr>
               </thead>
@@ -33,17 +34,18 @@
                 <tr>
                   <td><%= i+1 %></td>
                   <td><%= e.name %></td>
-                  <td><%= e.type %></td>
-                  <td><%= e.size %></td>
-                  <td><%= new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(e.price) %></td>
+                  <td><%= e.venue %></td>
+                  <td><%= e.start %></td>
+                  <td><%= e.end %></td>
+                  <td><%= `${Math.floor((new Date(e.end) - new Date(e.start))/(24*3600*1000))} Hari` %></td>
                   <td>
                     <div class="dropdown">
                       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                       <ul class="dropdown-menu shadow">
-                        <li><a class="dropdown-item" href="product/view/<%= e._id %>">Detail</a></li>
-                        <li><a class="dropdown-item" href="product/edit/<%= e._id %>">Edit</a></li>
+                        <li><a class="dropdown-item" href="schedule/view/<%= e._id %>">Detail</a></li>
+                        <li><a class="dropdown-item" href="schedule/edit/<%= e._id %>">Edit</a></li>
                         <li>
-                          <form action="product/delete/<%= e._id %>?_method=delete" method="POST" id="form-delete-<%= e._id %>">
+                          <form action="schedule/delete/<%= e._id %>?_method=delete" method="POST" id="form-delete-<%= e._id %>">
                             <a class="dropdown-item" href="#" onclick="confirm('Yakin Hapus <%= e.name %>?') ? document.getElementById('form-delete-<%= e._id %>').submit() : '' ">Hapus</a>
                           </form>
                         </li>

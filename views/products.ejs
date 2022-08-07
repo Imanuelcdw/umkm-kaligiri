@@ -4,9 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produk</title>
+    <title>Produk Kami</title>
     <%- include('partials/css.ejs') %>
   </head>
+  <style>
+    .item {
+      transition: 0.2s;
+    }
+    .item:hover {
+      opacity: 0.8;
+    }
+
+    .item-name {
+      transition: 0.2s;
+      transform: scale(0);
+    }
+
+    .item:hover .item-name {
+      transform: scale(1);
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
   <body>
     <%- include('partials/header.ejs') %>
     <div class="container">
@@ -14,9 +35,14 @@
       <div class="row">
         <% data.forEach(e => { %>
         <div class="col-md-6 mb-4">
-          <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('<%= e.image %>'); height: 400px; background-size: cover; background-position: center" class="rounded shadow">
-            <div class="text-white"><%= e.name %></div>
-          </div>
+          <a href="detail/<%= e._id %>">
+            <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('<%= e.image %>'); height: 300px; background-size: cover; background-position: center" class="rounded shadow item">
+              <div class="text-white text-center item-name w-100 pt-5">
+                <h3><%= e.name %></h3>
+                <p><%= e.description %></p>
+              </div>
+            </div>
+          </a>
         </div>
         <% }) %>
       </div>
@@ -24,3 +50,4 @@
     <%- include('partials/footer.ejs') %>
   </body>
 </html>
+<%- include('partials/js.ejs') %>

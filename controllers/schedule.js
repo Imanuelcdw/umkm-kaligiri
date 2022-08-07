@@ -4,30 +4,41 @@ const Schedule = require('../models/schedule')
 class ScheduleController {
   static getAll = asyncHandler(async (req, res) => {
     const data = await Schedule.find()
-    res.json(data)
+    res.render('./schedule/index', { data, active: 'schedule' })
   })
 
   static get = asyncHandler(async (req, res) => {
     const { id } = req.params
     const data = await Schedule.findOne({ _id: id })
-    res.json(data)
+    res.render('./schedule/view', { data, active: 'schedule' })
   })
 
   static create = asyncHandler(async (req, res) => {
     const data = await Schedule.create(req.body)
-    res.json(data)
+    res.redirect('/schedule')
   })
 
-  static edit = asyncHandler(async (req, res) => {
+  static update = asyncHandler(async (req, res) => {
     const { id } = req.params
     const data = await Schedule.findOneAndUpdate({ _id: id }, req.body, { new: true })
-    res.json(data)
+    res.redirect('/schedule')
   })
 
   static remove = asyncHandler(async (req, res) => {
     const { id } = req.params
     const data = await Schedule.findOneAndDelete({ _id: id })
-    res.json(data)
+    res.redirect('/schedule')
+    // res.json(data)
+  })
+
+  static add = asyncHandler(async (req, res) => {
+    res.render('./schedule/add', { active: 'schedule' })
+  })
+
+  static edit = asyncHandler(async (req, res) => {
+    const { id } = req.params
+    const data = await Schedule.findOne({ _id: id })
+    res.render('./schedule/edit', { data, active: 'schedule' })
   })
 }
 

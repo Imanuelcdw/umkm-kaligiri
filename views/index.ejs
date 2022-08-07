@@ -43,10 +43,10 @@
           </div>
           <div class="col-md-9">
             <div class="my-slider">
-              <% data.forEach((e) => { %>
+              <% product.forEach((e) => { %>
 
               <div class="item">
-                <a href="/product/<%= e._id %>">
+                <a href="/detail/<%= e._id %>">
                   <img class="shadow rounded-1" src="<%= e.image %>" alt="" width="400" height="400" />
                 </a>
               </div>
@@ -60,19 +60,24 @@
     <section class="mb-5 bg-dark">
       <div class="container py-4">
         <div class="row align-items-center gy-4">
-          <div class="col">
+          <div class="col-md-3">
             <h3 class="text-white" style="font-size: 30px; letter-spacing: 5px; font-family: 'Staatliches', cursive">Jadwal Acara</h3>
           </div>
-          <% for(let i=0;i<3;i++){ %>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-body">
-                <h5>06/07/2022 <span class="badge bg-secondary">3 hari</span></h5>
-                <h3>Event <%= i %></h3>
+          <div class="col-md-9">
+            <div class="my-slider2">
+              <% schedule.forEach((e,i) => { %> <% const hari = Math.floor((new Date(e.start) - new Date())/(24*3600*1000)) %>
+              <div>
+                <div class="card">
+                  <div class="card-body">
+                    <b><%= `${e.start} s/d ${e.end}` %> </b>
+                    <h3><%= `${i+1}. ${e.name}` %></h3>
+                    <span class="badge bg-secondary"><%= hari > 0 ? `${hari} Hari Lagi` : `Sedang Berlangsung` %></span>
+                  </div>
+                </div>
               </div>
+              <% }) %>
             </div>
           </div>
-          <% } %>
         </div>
       </div>
     </section>
@@ -154,5 +159,25 @@
     gutter: 20,
     mouseDrag: true,
     center: true,
+    preventScrollOnTouch: 'auto',
+  })
+
+  var slider2 = tns({
+    container: '.my-slider2',
+    nav: false,
+    autoplayButtonOutput: false,
+    mouseDrag: true,
+    items: 3,
+    gutter: 10,
+    loop: false,
+    responsive: {
+      300: {
+        items: 1,
+      },
+      900: {
+        items: 3,
+      },
+    },
+    preventScrollOnTouch: 'auto',
   })
 </script>

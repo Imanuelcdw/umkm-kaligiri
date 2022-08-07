@@ -10,10 +10,13 @@
           <a class="nav-link" aria-current="page" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/product">Produk</a>
+          <a class="nav-link <%= active == 'product' ? 'active' : '' %>" href="/product">Produk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Jadwal</a>
+          <a class="nav-link <%= active == 'schedule' ? 'active' : '' %>" href="/schedule">Jadwal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/article">Pengumuman</a>
         </li>
       </ul>
     </div>

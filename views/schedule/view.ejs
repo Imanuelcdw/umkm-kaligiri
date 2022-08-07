@@ -15,7 +15,7 @@
         <div class="col-md-6">
           <div class="card shadow">
             <div class="card-body">
-              <h3>Detail Produk</h3>
+              <h3>Detail Acara</h3>
               <table cellpadding="10">
                 <tr>
                   <th>ID</th>
@@ -23,13 +23,13 @@
                 </tr>
 
                 <tr>
-                  <th>Nama Produk</th>
+                  <th>Nama Acara</th>
                   <td><%= data.name %></td>
                 </tr>
 
                 <tr>
-                  <th>Jenis UMKM</th>
-                  <td><%= data.type %></td>
+                  <th>Tempat Acara</th>
+                  <td><%= data.venue %></td>
                 </tr>
 
                 <tr>
@@ -38,23 +38,20 @@
                 </tr>
 
                 <tr>
-                  <th>Ukuran Produk</th>
-                  <td><%= data.size %></td>
+                  <th>Tanggal Mulai Acara</th>
+                  <td><%= data.start %></td>
                 </tr>
 
                 <tr>
-                  <th>Harga Produk</th>
-                  <td><%= data.price %></td>
+                  <th>Tanggal Selesai Acara</th>
+                  <td><%= data.end %></td>
+                </tr>
+
+                <tr>
+                  <th>Lama Acara</th>
+                  <td><%= `${Math.floor((new Date(data.end) - new Date(data.start))/(24*3600*1000))} Hari` %></td>
                 </tr>
               </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow">
-            <div class="card-body">
-              <b>Gambar</b>
-              <img src="<%= `/${data.image}` %>" class="img-fluid" alt="" />
             </div>
           </div>
         </div>

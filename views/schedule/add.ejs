@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('../partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/header-dashboard.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3>Tambah Acara</h3>
+              <form action="/schedule" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nama Acara</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nama Acara" name="name" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="venue" class="form-label">Tempat Acara</label>
+                  <input type="text" class="form-control" id="venue" placeholder="Nama Acara" name="venue" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="desc" class="form-label">Deskripsi</label>
+                  <textarea name="description" id="desc" class="form-control" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="start" class="form-label">Tanggal Mulai Acara</label>
+                  <input type="date" class="form-control" id="start" name="start" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="end" class="form-label">Tanggal Selesai Acara</label>
+                  <input type="date" class="form-control" id="end" name="end" required />
+                </div>
+
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <div class="my-5"></div>
+  </body>
+</html>
+<%- include('../partials/js.ejs') %>

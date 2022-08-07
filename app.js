@@ -1,11 +1,12 @@
-const express = require('express')
 const dotenv = require('dotenv')
+const express = require('express')
 const mongoose = require('mongoose')
-const asycnHandler = require('express-async-handler')
 const methodOverride = require('method-override')
 const fileUpload = require('express-fileupload')
+const cors = require('cors')
 
 const Product = require('./models/product')
+const Schedule = require('./models/schedule')
 
 dotenv.config()
 
@@ -14,11 +15,12 @@ const port = process.env.PORT || 3000
 
 const productRouter = require('./routes/product')
 const scheduleRouter = require('./routes/schedule')
-const articleRouter = require('./routes/article')
 const userRouter = require('./routes/user')
+const mainRouter = require('./routes/main')
 
 app.set('view engine', 'ejs')
 
+app.use(cors())
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -27,21 +29,12 @@ app.use(fileUpload())
 
 app.use('/product', productRouter)
 app.use('/schedule', scheduleRouter)
-app.use('/article', articleRouter)
 app.use('/user', userRouter)
+app.use('/', mainRouter)
 
-// main
-app.get('/products', async (req, res) => {
-  const data = await Product.find()
-  res.render('products', { data })
-})
-app.get('/', async (req, res) => {
-  const data = await Product.find()
-  res.render('index', { data })
-})
-app.use((req, res) => {
-  res.send('Not Found!')
-})
+// app.use((req, res) => {
+//   res.send('Not Found!')
+// })
 
 const start = async () => {
   try {

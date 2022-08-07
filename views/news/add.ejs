@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('../partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/header-dashboard.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3>Tambah Pengumuman</h3>
+              <form action="/news" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Judul Pengumuman</label>
+                  <input type="text" class="form-control" id="title" placeholder="Judul Pengumuman" name="title" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="body" class="form-label">Isi Pengumuman</label>
+                  <textarea name="body" id="body" class="form-control" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <div class="my-5"></div>
+  </body>
+</html>
+<%- include('../partials/js.ejs') %>

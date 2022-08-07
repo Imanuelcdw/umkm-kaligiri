@@ -92,22 +92,12 @@
             </div>
             <hr />
             <table>
+              <% news.forEach((e,i) => { %>
               <tr>
-                <td valign="top" class="small">2022.03.17</td>
-                <td class="ps-4 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                <td valign="top" class="small"><%= new Date(e.createdAt).toLocaleDateString('id-ID') %></td>
+                <td class="ps-4 pb-3"><%= e.title %></td>
               </tr>
-              <tr>
-                <td valign="top" class="small">2022.03.17</td>
-                <td class="ps-4 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-              </tr>
-              <tr>
-                <td valign="top" class="small">2022.03.17</td>
-                <td class="ps-4 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-              </tr>
-              <tr>
-                <td valign="top" class="small">2022.03.17</td>
-                <td class="ps-4 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-              </tr>
+              <% }) %>
             </table>
           </div>
           <div class="col-md-7">
@@ -119,20 +109,19 @@
         </div>
       </div>
     </section>
-
     <!--  -->
 
     <section>
       <div class="container">
         <div class="row gy-4">
           <div class="col-md-4">
-            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('p1.jpeg'); background-size: cover; background-position: center"></div>
+            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('home/p1.jpeg'); background-size: cover; background-position: center"></div>
           </div>
           <div class="col-md-4">
-            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('p2.jpeg'); background-size: cover; background-position: center"></div>
+            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('home/p2.jpeg'); background-size: cover; background-position: center"></div>
           </div>
           <div class="col-md-4">
-            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('p3.jpeg'); background-size: cover; background-position: center"></div>
+            <div class="shadow-lg rounded-3" style="height: 400px; background-image: url('home/p3.jpeg'); background-size: cover; background-position: center"></div>
           </div>
           <% for(let i=0;i<3;i++){ %> <% } %>
         </div>

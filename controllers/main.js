@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const Product = require('../models/product')
 const Schedule = require('../models/schedule')
+const News = require('../models/news')
 
 class MainController {
   static getProducts = asyncHandler(async (req, res) => {
@@ -17,7 +18,8 @@ class MainController {
   static index = asyncHandler(async (req, res) => {
     const product = await Product.find().limit(3)
     const schedule = await Schedule.find().sort('start')
-    res.render('index', { product, schedule })
+    const news = await News.find().sort('-createdAt').limit(5)
+    res.render('index', { product, schedule, news })
   })
 }
 

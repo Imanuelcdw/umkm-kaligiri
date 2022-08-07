@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('../partials/css.ejs') %>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+  </head>
+  <body>
+    <%- include('../partials/header-dashboard.ejs') %>
+    <!--  -->
+    <section>
+      <div class="container mt-3">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3>Pengumuman</h3>
+            <a href="news/add" class="btn btn-sm btn-primary mb-3">Tambah Pengumuman</a>
+            <table id="table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Judul Pengumuman</th>
+                  <th>Isi Pengumuman</th>
+                  <th>Tanggal</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach((e, i) => { %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= e.title %></td>
+                  <td><%= e.body %></td>
+                  <td><%= new Date(e.createdAt).toLocaleDateString('id-ID') %></td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                      <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item" href="news/view/<%= e._id %>">Detail</a></li>
+                        <li><a class="dropdown-item" href="news/edit/<%= e._id %>">Edit</a></li>
+                        <li>
+                          <form action="news/delete/<%= e._id %>?_method=delete" method="POST" id="form-delete-<%= e._id %>">
+                            <a class="dropdown-item" href="#" onclick="confirm('Yakin Hapus <%= e.title %>?') ? document.getElementById('form-delete-<%= e._id %>').submit() : '' ">Hapus</a>
+                          </form>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <div class="my-5"></div>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<%- include('../partials/js.ejs') %>
+<script>
+  $(document).ready(function () {
+    $('#table').DataTable()
+  })
+</script>

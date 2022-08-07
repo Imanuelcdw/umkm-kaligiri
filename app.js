@@ -5,9 +5,6 @@ const methodOverride = require('method-override')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
-const Product = require('./models/product')
-const Schedule = require('./models/schedule')
-
 dotenv.config()
 
 const app = express()
@@ -15,6 +12,7 @@ const port = process.env.PORT || 3000
 
 const productRouter = require('./routes/product')
 const scheduleRouter = require('./routes/schedule')
+const newsRouter = require('./routes/news')
 const userRouter = require('./routes/user')
 const mainRouter = require('./routes/main')
 
@@ -29,6 +27,7 @@ app.use(fileUpload())
 
 app.use('/product', productRouter)
 app.use('/schedule', scheduleRouter)
+app.use('/news', newsRouter)
 app.use('/user', userRouter)
 app.use('/', mainRouter)
 

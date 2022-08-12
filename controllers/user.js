@@ -14,8 +14,10 @@ class UserController {
   })
 
   static create = asyncHandler(async (req, res) => {
+    const salt = await bcryptjs.genSalt()
+    req.body.password = await bcryptjs.hash(req.body.password, salt)
     const data = await User.create(req.body)
-    res.json(data)
+    res.json(req.body)
   })
 
   static edit = asyncHandler(async (req, res) => {

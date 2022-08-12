@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Masukan password'],
     },
+    level: {
+      type: String,
+      default: '1',
+    },
   },
   { timestamps: true }
 )
+
+module.exports = mongoose.model('User', userSchema)

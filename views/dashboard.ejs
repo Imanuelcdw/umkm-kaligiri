@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('partials/header-dashboard.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <h1>Dashboard</h1>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h4>Produk</h4>
+              <h2><%= count_product %></h2>
+              <a href="/product" class="btn btn-sm btn-primary">Tambah</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h4>Acara</h4>
+              <h2><%= count_schedule %></h2>
+              <a href="/schedule" class="btn btn-sm btn-primary">Tambah</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h4>Pengumuman</h4>
+              <h2><%= count_news %></h2>
+              <a href="/news" class="btn btn-sm btn-primary">Tambah</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="my-5"></div>
+  </body>
+</html>
+
+<%- include('partials/js.ejs') %>

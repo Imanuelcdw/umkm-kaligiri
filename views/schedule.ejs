@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Acara</title>
+    <%- include('partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+    <div class="container mt-5">
+      <h3><%= data.name %></h3>
+      <h5><%= data.start %> s/d <%= data.end %></h5>
+      <table>
+        <tr>
+          <th>Tempat Acara</th>
+          <td><%= data.venue %></td>
+        </tr>
+        <tr>
+          <th>Tempat Acara</th>
+          <td><%= data.venue %></td>
+        </tr>
+        <tr>
+          <th>Deskripsi</th>
+          <td><%= data.description %></td>
+        </tr>
+      </table>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>
+<%- include('partials/js.ejs') %>

@@ -30,6 +30,10 @@
       a {
         text-decoration: none !important;
       }
+
+      .css-4aovbb {
+        transform: scale(0) !important;
+      }
     </style>
   </head>
   <body>
@@ -46,7 +50,7 @@
               <% product.forEach((e) => { %>
 
               <div class="item">
-                <a href="/detail/<%= e._id %>">
+                <a href="/detail/product/<%= e._id %>">
                   <img class="shadow rounded-1" src="<%= e.image %>" alt="" width="400" height="400" />
                 </a>
               </div>
@@ -66,15 +70,17 @@
           <div class="col-md-9">
             <div class="my-slider2">
               <% schedule.forEach((e,i) => { %> <% const hari = Math.floor((new Date(e.start) - new Date())/(24*3600*1000)) %>
-              <div>
-                <div class="card">
-                  <div class="card-body">
-                    <b><%= `${e.start} s/d ${e.end}` %> </b>
-                    <h3><%= `${i+1}. ${e.name}` %></h3>
-                    <span class="badge bg-secondary"><%= hari > 0 ? `${hari} Hari Lagi` : `Sedang Berlangsung` %></span>
+              <a href="/detail/schedule/<%= e._id %>">
+                <div class="text-dark">
+                  <div class="card">
+                    <div class="card-body">
+                      <b><%= `${e.start} s/d ${e.end}` %> </b>
+                      <h3><%= `${i+1}. ${e.name}` %></h3>
+                      <span class="badge bg-secondary"><%= hari > 0 ? `${hari} Hari Lagi` : `Sedang Berlangsung` %></span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
               <% }) %>
             </div>
           </div>
@@ -95,7 +101,10 @@
               <% news.forEach((e,i) => { %>
               <tr>
                 <td valign="top" class="small"><%= new Date(e.createdAt).toLocaleDateString('id-ID') %></td>
-                <td class="ps-4 pb-3"><%= e.title %></td>
+                <td class="ps-4 pb-3">
+                  <b><%= e.title %></b> <br />
+                  <small><%= e.body %></small>
+                </td>
               </tr>
               <% }) %>
             </table>

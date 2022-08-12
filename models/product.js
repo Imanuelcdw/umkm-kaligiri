@@ -25,6 +25,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Masukan jenis umkm'],
     },
+    link: {
+      type: String,
+    },
   },
   { timestamps: true }
 )

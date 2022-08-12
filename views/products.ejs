@@ -30,16 +30,16 @@
   </style>
   <body>
     <%- include('partials/header.ejs') %>
-    <div class="container">
-      <h2 class="text-center">Produk Kami</h2>
+    <div class="container mt-5">
+      <h2 class="text-center mb-3">Produk Kami</h2>
       <div class="row">
         <% data.forEach(e => { %>
         <div class="col-md-6 mb-4">
-          <a href="detail/<%= e._id %>">
+          <a href="/detail/product/<%= e._id %>">
             <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('<%= e.image %>'); height: 300px; background-size: cover; background-position: center" class="rounded shadow item">
               <div class="text-white text-center item-name w-100 pt-5">
                 <h3><%= e.name %></h3>
-                <p><%= e.description %></p>
+                <p><%= e.type %></p>
               </div>
             </div>
           </a>

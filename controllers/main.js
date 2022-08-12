@@ -4,6 +4,12 @@ const Schedule = require('../models/schedule')
 const News = require('../models/news')
 
 class MainController {
+  static getSchedule = asyncHandler(async (req, res) => {
+    const { id } = req.params
+    const data = await Schedule.findOne({ _id: id })
+    res.render('schedule', { data })
+  })
+
   static getProducts = asyncHandler(async (req, res) => {
     const data = await Product.find()
     res.render('products', { data })
@@ -12,7 +18,8 @@ class MainController {
   static getProduct = asyncHandler(async (req, res) => {
     const { id } = req.params
     const data = await Product.findOne({ _id: id })
-    res.render('detail', { data })
+    const products = await Product.find({ _id: { $ne: id } }).limit(3)
+    res.render('detail', { data, products })
   })
 
   static index = asyncHandler(async (req, res) => {

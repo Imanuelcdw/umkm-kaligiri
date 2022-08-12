@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('../partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/header-dashboard.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3>Edit Pengguna</h3>
+              <form action="<%=  `${data._id}?_method=patch` %>" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nama Pengguna</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nama Pengguna" name="name" value="<%= data.name %>" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<%= data.username %>" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="<%= data.password %>" required />
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">Ubah</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <div class="my-5"></div>
+  </body>
+</html>
+<%- include('../partials/js.ejs') %>

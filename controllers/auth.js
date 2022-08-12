@@ -9,8 +9,8 @@ class AuthController {
 
     if (data && (await bcryptjs.compare(password, data.password))) {
       req.session.loggedIn = true
-      const { _id, name, username } = data
-      req.session.user = { _id, name, username }
+      const { _id, name, username, level } = data
+      req.session.user = { _id, name, username, level }
       res.redirect('/dashboard')
     } else {
       res.redirect('/auth/login')

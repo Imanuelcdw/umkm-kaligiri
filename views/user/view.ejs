@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMKM KALIGIRI - <%= active %></title>
+    <%- include('../partials/css.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/header-dashboard.ejs') %>
+    <!--  -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3>Detail User</h3>
+              <table cellpadding="10">
+                <tr>
+                  <th>ID</th>
+                  <td><%= data._id %></td>
+                </tr>
+
+                <tr>
+                  <th>Nama Pengguna</th>
+                  <td><%= data.name %></td>
+                </tr>
+
+                <tr>
+                  <th>Username</th>
+                  <td><%= data.username %></td>
+                </tr>
+
+                <tr>
+                  <th>Password</th>
+                  <td><%= data.password %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="my-5"></div>
+  </body>
+</html>
+<%- include('../partials/js.ejs') %>

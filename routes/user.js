@@ -1,11 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const { getAll, create, get, edit, remove, login, view_login, logout } = require('../controllers/user')
+const { getAll, create, get, remove, update, add, edit } = require('../controllers/user')
 
 router.route('/').get(getAll).post(create)
-// router.route('/login').get(view_login).post(login)
-// router.route('/logout').get(logout)
-router.route('/:id').get(get).patch(edit).delete(remove)
+router.route('/view/:id').get(get)
+router.route('/edit/:id').patch(update)
+router.route('/delete/:id').delete(remove)
 
+// view
+router.route('/add').get(add)
+router.route('/edit/:id').get(edit)
 module.exports = router

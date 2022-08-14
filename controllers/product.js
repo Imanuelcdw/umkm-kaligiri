@@ -30,9 +30,6 @@ class ProductController {
     if (!file) {
       delete req.body.image
     } else {
-      // const data = await Product.findOne({ _id: id })
-      // fs.unlinkSync(`./public/${data.image}`)
-
       const image = file.image
       const uploadPath = './public/' + image.name
       await image.mv(uploadPath)
@@ -46,7 +43,6 @@ class ProductController {
     const { id } = req.params
     const data = await Product.findOne({ _id: id })
     await Product.deleteOne({ _id: id })
-    fs.unlinkSync('./public/' + data.image)
     res.redirect('/product')
   })
 

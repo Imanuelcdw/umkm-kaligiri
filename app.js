@@ -50,7 +50,7 @@ app.use(
 app.use('/product', isLogin, profile, productRouter)
 app.use('/schedule', isLogin, profile, scheduleRouter)
 app.use('/news', isLogin, profile, newsRouter)
-app.use('/user', userRouter)
+app.use('/user', isLogin, profile, userRouter)
 app.use('/dashboard', isLogin, profile, dashboardRouter)
 app.use('/auth', authRouter)
 

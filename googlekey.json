@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "umkmkaligiri",
+  "private_key_id": "960b73580bc73893788ab1e899f9678178b0ab3f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDBk9Ok8pJ3jXgP\nCPQF9T9GbcRX/goT8+jy3HiHJhcUv1fOIuZO9kjBBTz7BRF4pTh7LMxYipIdaVyr\n03g+Pshl+inISwvduAKVt1f6v4+NOqzH1dMcvJM5cbWnCLn1BMlDRCCFEM9rC9hu\n/s0IJMqYBO9uadG0m/bfTnC7bC3C1ZFguHCGGDQxs87Q110VpBOxoLDYoUVaLvKU\nD0jdFPZkBusvLkf7IgofwM8npiADYshqtRrv/dAY9TLtcoCmABWQ29anVpipZ/Ps\nG7eyomEzV7hfglXe8eis9P0o6LL67kLM7Qy482LaE1OfukZb+b/ejx2+HZgXnczL\nskEUfvovAgMBAAECggEADQOZOP+t5Se3qJsbfMMOK/f5OUk0+D5vrNQxrjRbXOO4\nTX1/KlPYdFGb1exzTj8dWvqaCmHWjO+mcU7YSKcD5gc5g+O3uoJCejpHSe5TAlWt\nhAnWFZp/8163rbEif1yBA2qzHP8SUsoLFPtAYYnHrQy35B5tIM1TfZPSdGdDdFO1\nUU2DstirnvIPvZ0MrVADZmkKgwlb8d42KVy/+zCwKjPxrOgXAHkw8Ma3ZZppM/q7\nnzRllm4etKkjnDdgDxWwwfHhbvhASVIa3iDROcQfV+OfOdD2uba0XBxqRE/5J4If\nce+DuZGykIhsHmTMvuQja8QHsRNN3X3ThUlU7pmG8QKBgQD0CYxs+NB45mOMDUQu\nlCfyFDEPwVCSQRusXZdNFSZhXLaMhz79+ZxkiEhsrIyNZWKwjVOLbbpfx4hUbqP3\nOVyEWHm3WaMrynAp4Sbij6HcX/RsG8Pu5ad0yKnC7+grUIPjPelxf7Z7gKKB32lA\nrMUnkc/t9V7OFP7C1LyRCOz1MwKBgQDLEQ1HC85i4mYRR4nAjf60W4WnmBP7xWYC\nuOoE2TUn+fGraw6NuIizxUZoCkadDY+hORDeP3ZjBnthB/zi/ejzb0+uiPvdRCju\n3cVXmer02Mse3G0kso4UcJ/rRu7IEs9M2KHlw6v88z0vtrv7IK/BF+fGFuS7yXda\nqaI9WsuvFQKBgQDd8eE5KoHPsxlOQrKD+lLqI9sLDTIOEhDtDqGQhW/GlN+hp09v\nBRlrhVb5H2UlI9RB5gbZhA5BFeOzhnyxWAYAh8cLLgbsyMyCCjenTiJTnyFZQVdN\naqiF2gorNK3e1vdcMO6jPxfj8vXZUCsVmwwkFMUbElIK86VP5NMqxQddaQKBgQDG\nEmLmGtD8SSMP1by68oYv/Fm5KLDNUzV2kFHL2uZrkPQ2pR00BXxqBZHwZ52LEbA4\nrUYT0skyPB9afQUhkFOKJ9gMQZeSsypOHEmicgLpQxGVj6JyOiw2KckDIFRHGXnU\n1jXMvPjkqYnUIaTohnCIoz2zTZ9cwF3INFCJEig9JQKBgQDpd+PLaOmp+qC/zLBG\nz9Bz5hkXEDGaIsYG8pKRkwfA1wSRMq46eSPvUeW+ooF+3S17FMs44hdOA1M9/Krh\nEyK+RRLHyMPgTevLsKHnlTttBR/beRRZtAwAQZqArO3viHKHj894pGXVLsnzLkmd\naFj2tK6Niz6MHkC7g7wPXmKT3g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "umkmkaligiri@umkmkaligiri.iam.gserviceaccount.com",
+  "client_id": "108261201970217639971",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/umkmkaligiri%40umkmkaligiri.iam.gserviceaccount.com"
+}

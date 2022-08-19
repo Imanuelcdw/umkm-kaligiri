@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 const session = require('express-session')
+const cookie = require('cookie')
 
 // Config
 dotenv.config()
@@ -40,7 +41,8 @@ app.use(
     secret: 'umkmkaligiri',
     name: 'secretName',
     cookie: {
-      sameSite: true,
+      secure: true,
+      sameSite: 'None',
       maxAge: Date.now() + 30 * 86400 * 1000,
     },
   })

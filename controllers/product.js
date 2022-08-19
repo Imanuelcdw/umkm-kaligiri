@@ -2,6 +2,9 @@
 const asyncHandler = require('express-async-handler')
 const Product = require('../models/product')
 const fs = require('fs')
+const { google } = require('googleapis')
+const stream = require('stream')
+const { drive } = require('googleapis/build/src/apis/drive')
 
 class ProductController {
   static getAll = asyncHandler(async (req, res) => {
@@ -17,10 +20,15 @@ class ProductController {
 
   static create = asyncHandler(async (req, res) => {
     const image = req.files.image
-    const uploadPath = './public/' + image.name
-    await image.mv(uploadPath)
-    req.body.image = image.name
-    const data = await Product.create(req.body)
+    const upload = await this.uploadFile(image)
+
+    console.log(upload)
+
+    // const uploadPath = './public/' + image.name
+    // await image.mv(uploadPath)
+    // req.body.image = image.name
+    // const data = await Product.create(req.body)
+
     res.redirect('/product')
   })
 
@@ -55,6 +63,43 @@ class ProductController {
     const data = await Product.findOne({ _id: id })
     res.render('./product/edit', { data, active: 'product' })
   })
+
+  static uploadFile = async (fileObject) => {
+    const bufferStream = new stream.PassThrough()
+    bufferStream.end(fileObject.buffer)
+
+    try {
+      const auth = new google.auth.GoogleAuth({
+        keyFile: './googlekey.json',
+        scopes: ['https://www.googleapis.com/auth/drive'],
+      })
+
+      const driveService = google.drive({
+        version: 'v3',
+        auth,
+      })
+
+      const fileMetaData = {
+        name: fileObject.name,
+        parents: [process.env.GOOGLE_DRIVE_FOLDER],
+      }
+
+      const media = {
+        MimeType: fileObject.MimeType,
+        body: bufferStream,
+      }
+
+      const response = await driveService.files.create({
+        resource: fileMetaData,
+        media,
+        field: 'id',
+      })
+
+      return response.data.id
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 module.exports = ProductController

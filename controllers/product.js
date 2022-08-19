@@ -19,29 +19,23 @@ class ProductController {
   })
 
   static create = asyncHandler(async (req, res) => {
-    const image = req.files.image
-    const upload = await this.uploadFile(image)
-
-    console.log(upload)
-
-    // const uploadPath = './public/' + image.name
-    // await image.mv(uploadPath)
-    // req.body.image = image.name
-    // const data = await Product.create(req.body)
+    const [file] = req.files
+    console.log(file)
+    const upload = await this.uploadFile(file)
+    req.body.image = `https://drive.google.com/uc?id=${upload}`
+    const data = await Product.create(req.body)
 
     res.redirect('/product')
   })
 
   static update = asyncHandler(async (req, res) => {
-    const file = req.files
+    const [file] = req.files
     const { id } = req.params
     if (!file) {
       delete req.body.image
     } else {
-      const image = file.image
-      const uploadPath = './public/' + image.name
-      await image.mv(uploadPath)
-      req.body.image = image.name
+      const upload = await this.uploadFile(file)
+      req.body.image = `https://drive.google.com/uc?id=${upload}`
     }
     const data = await Product.findOneAndUpdate({ _id: id }, req.body, { new: true })
     res.redirect('/product')
@@ -67,38 +61,23 @@ class ProductController {
   static uploadFile = async (fileObject) => {
     const bufferStream = new stream.PassThrough()
     bufferStream.end(fileObject.buffer)
-
-    try {
-      const auth = new google.auth.GoogleAuth({
-        keyFile: './googlekey.json',
-        scopes: ['https://www.googleapis.com/auth/drive'],
-      })
-
-      const driveService = google.drive({
-        version: 'v3',
-        auth,
-      })
-
-      const fileMetaData = {
-        name: fileObject.name,
-        parents: [process.env.GOOGLE_DRIVE_FOLDER],
-      }
-
-      const media = {
-        MimeType: fileObject.MimeType,
+    const auth = new google.auth.GoogleAuth({
+      keyFile: './googlekey.json',
+      scopes: ['https://www.googleapis.com/auth/drive'],
+    })
+    const { data } = await google.drive({ version: 'v3', auth }).files.create({
+      media: {
+        mimeType: fileObject.mimeType,
         body: bufferStream,
-      }
-
-      const response = await driveService.files.create({
-        resource: fileMetaData,
-        media,
-        field: 'id',
-      })
-
-      return response.data.id
-    } catch (error) {
-      console.log(error)
-    }
+      },
+      requestBody: {
+        name: fileObject.originalname,
+        parents: [process.env.GOOGLE_DRIVE_FOLDER],
+      },
+      fields: 'id,name',
+    })
+    console.log(`Uploaded file ${data.name} ${data.id}`)
+    return data.id
   }
 }
 

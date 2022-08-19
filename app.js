@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-const fileUpload = require('express-fileupload')
+// const fileUpload = require('express-fileupload')
 const cors = require('cors')
 const session = require('express-session')
 const cookie = require('cookie')
@@ -33,7 +33,7 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-app.use(fileUpload())
+// app.use(fileUpload())
 app.use(
   session({
     resave: false,
@@ -41,8 +41,8 @@ app.use(
     secret: 'umkmkaligiri',
     name: 'secretName',
     cookie: {
-      secure: true,
-      sameSite: 'None',
+      // secure: true,
+      sameSite: true,
       maxAge: Date.now() + 30 * 86400 * 1000,
     },
   })

@@ -7,23 +7,26 @@
     <title>Detail Acara</title>
     <%- include('partials/css.ejs') %>
   </head>
+  <style>
+    body {
+      background-color: #cfddef;
+    }
+  </style>
   <body>
     <%- include('partials/header.ejs') %>
-    <div class="container mt-5">
+
+    <div class="container mt-3">
+      <h2 class="mb-5 text-center">Jadwal Acara</h2>
       <h3><%= data.name %></h3>
       <h5><%= data.start %> s/d <%= data.end %></h5>
-      <table>
+      <table cellpadding="10">
         <tr>
           <th>Tempat Acara</th>
           <td><%= data.venue %></td>
         </tr>
         <tr>
-          <th>Tempat Acara</th>
-          <td><%= data.venue %></td>
-        </tr>
-        <tr>
-          <th>Deskripsi</th>
-          <td><%= data.description %></td>
+          <th valign="top">Deskripsi</th>
+          <td><%- data.description %></td>
         </tr>
       </table>
     </div>

@@ -16,6 +16,7 @@ class UserController {
 
   static create = asyncHandler(async (req, res) => {
     const salt = await bcryptjs.genSalt()
+    console.log(req.body)
     req.body.password = await bcryptjs.hash(req.body.password, salt)
     const data = await User.create(req.body)
     res.redirect('/user')

@@ -7,12 +7,17 @@
     <title>Detail Produk</title>
     <%- include('partials/css.ejs') %>
   </head>
+  <style>
+    body {
+      background-color: #cfddef;
+    }
+  </style>
   <body>
     <%- include('partials/header.ejs') %>
-    <div class="container mt-5">
+    <div class="container my-5">
       <div class="row">
         <div class="col-md-5">
-          <img src="<%= '/' + data.image %>" class="img-fluid img-thumbnail shadow" alt="" />
+          <img src="<%= data.image %>" class="img-fluid img-thumbnail shadow" alt="" />
         </div>
         <div class="col-md-7">
           <h1 class="display-1"><%= data.name %></h1>
@@ -38,14 +43,14 @@
         </div>
       </div>
     </div>
-    <div class="container mt-3">
+    <div class="container my-5">
       <h3>Produk Lainnya</h3>
       <div class="row">
         <% products.forEach((e) => { %>
-        <div class="col-md-4 me-3">
+        <div class="col-md-4">
           <a href="/detail/product/<%= e._id %>" style="text-decoration: none" class="text-dark">
-            <div style="background-image: url('/<%= e.image %>'); background-position: center; background-size: cover; height: 200px"></div>
-            <h4><%= e.name %></h4>
+            <div style="background-image: url('<%= e.image %>'); background-position: center; background-size: cover; height: 200px"></div>
+            <h5 class="text-center"><%= e.name %></h5>
           </a>
         </div>
 

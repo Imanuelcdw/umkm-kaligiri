@@ -69,19 +69,19 @@
           </div>
           <div class="col-md-9">
             <div class="my-slider2">
-              <% schedule.forEach((e,i) => { %> <% const hari = Math.floor((new Date(e.start) - new Date())/(24*3600*1000)) %>
+              <% schedule.forEach((e,i) => { %> <% const hari = Math.floor((new Date(e.start) - new Date())/(24*3600*1000)) %> <% if(hari > 0){ %>
               <a href="/detail/schedule/<%= e._id %>">
                 <div class="text-dark">
                   <div class="card">
                     <div class="card-body">
                       <b><%= `${e.start} s/d ${e.end}` %> </b>
-                      <h3><%= `${i+1}. ${e.name}` %></h3>
+                      <h3><%= `${e.name}` %></h3>
                       <span class="badge bg-secondary"><%= hari > 0 ? `${hari} Hari Lagi` : `Sedang Berlangsung` %></span>
                     </div>
                   </div>
                 </div>
               </a>
-              <% }) %>
+              <% } %> <% }) %>
             </div>
           </div>
         </div>
@@ -94,17 +94,14 @@
           <div class="col-md-5">
             <div class="d-flex flex-row">
               <div class="flex-grow-1"><h4>Pengumuman</h4></div>
-              <div class="align-self-end"><a href="" class="btn btn-secondary">Selanjutnya</a></div>
+              <div class="align-self-end"><a href="/allnews" class="btn btn-sm btn-secondary">Selanjutnya</a></div>
             </div>
             <hr />
             <table>
               <% news.forEach((e,i) => { %>
               <tr>
                 <td valign="top" class="small"><%= new Date(e.createdAt).toLocaleDateString('id-ID') %></td>
-                <td class="ps-4 pb-3">
-                  <b><%= e.title %></b> <br />
-                  <small><%= e.body %></small>
-                </td>
+                <td class="ps-4 pb-3"><%= e.title %></td>
               </tr>
               <% }) %>
             </table>

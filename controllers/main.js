@@ -28,6 +28,16 @@ class MainController {
     const news = await News.find().sort('-createdAt').limit(5)
     res.render('index', { product, schedule, news })
   })
+
+  static getAllSchedule = asyncHandler(async (req, res) => {
+    const data = await Schedule.find()
+    res.render('allschedule', { data })
+  })
+
+  static getAllNews = asyncHandler(async (req, res) => {
+    const data = await News.find()
+    res.render('allnews', { data })
+  })
 }
 
 module.exports = MainController

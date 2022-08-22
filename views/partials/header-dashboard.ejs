@@ -9,11 +9,6 @@
         <li class="nav-item">
           <a class="nav-link <%= active == 'dashboard' ? 'active' : '' %>" aria-current="page" href="/dashboard">Dashboard</a>
         </li>
-        <% if(user.level == 0){ %>
-        <li class="nav-item">
-          <a class="nav-link <%= active == 'user' ? 'active' : '' %>" href="/user">User</a>
-        </li>
-        <% } %>
         <li class="nav-item">
           <a class="nav-link <%= active == 'product' ? 'active' : '' %>" href="/product">Produk</a>
         </li>

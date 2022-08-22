@@ -20,7 +20,6 @@ const userRouter = require('./routes/user')
 const mainRouter = require('./routes/main')
 const authRouter = require('./routes/auth')
 const dashboardRouter = require('./routes/dashboard')
-const groupRouter = require('./routes/group')
 
 // middlewares
 const isLogin = require('./middlewares/auth')
@@ -48,7 +47,6 @@ app.use(
 )
 
 // Routes
-app.use('/group', isLogin, profile, groupRouter)
 app.use('/product', isLogin, profile, productRouter)
 app.use('/schedule', isLogin, profile, scheduleRouter)
 app.use('/news', isLogin, profile, newsRouter)
